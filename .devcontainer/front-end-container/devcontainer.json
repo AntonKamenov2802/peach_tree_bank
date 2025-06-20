@@ -1,0 +1,44 @@
+{
+    "name": "Front-end",
+    "dockerComposeFile": ["../../docker-compose.yml", "docker-compose.extended.yml"],
+    "service": "front-end",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mhutchie.git-graph",
+                "usernamehw.errorlens",
+                "humao.rest-client",
+                "Vue.volar",
+                "vitest.explorer",
+                "dbaeumer.vscode-eslint",
+                "EditorConfig.EditorConfig",
+                "esbenp.prettier-vscode"
+            ],
+            "settings": {
+                "explorer.fileNesting.enabled": true,
+                "explorer.fileNesting.patterns": {
+                    "tsconfig.json": "tsconfig.*.json, env.d.ts",
+                    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+                    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig"
+                },
+                "editor.codeActionsOnSave": {
+                    "source.fixAll": "explicit"
+                },
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            }
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    "mounts": [
+        {
+            "source": "/var/run/docker.sock",
+            "target": "/var/run/docker.sock",
+            "type": "bind"
+        }
+    ],
+    "postCreateCommand": ["/workspace/.devcontainer/front-end-container/postCreate.sh"]
+}
