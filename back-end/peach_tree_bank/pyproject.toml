@@ -1,0 +1,11 @@
+[project]
+name = "peach-tree-bank"
+version = "0.1.0"
+description = "Peach Tree Bank back-end service"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.13",
+    "ruff>=0.12.0",
+    "uvicorn>=0.34.3",
+]

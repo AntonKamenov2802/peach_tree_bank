@@ -1,0 +1,19 @@
+services:
+
+  back-end:
+    build: 
+      target: dev
+    volumes:
+      - ./:/workspace:cached
+    ports:
+      - "8080:8080"
+    command: /bin/bash -c "while sleep 1000; do :; done"
+
+  database:
+    image: postgres:17.2
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ${PWD}/db-data/:/var/lib/postgresql/data/

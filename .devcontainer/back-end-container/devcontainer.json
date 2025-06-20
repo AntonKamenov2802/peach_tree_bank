@@ -1,0 +1,38 @@
+{
+    "name": "Back-end",
+    "dockerComposeFile": ["../../docker-compose.yml", "docker-compose.extended.yml"],
+    "service": "back-end",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mhutchie.git-graph",
+                "vadimcn.vscode-lldb",
+                "usernamehw.errorlens",
+                "humao.rest-client",
+                "ms-azuretools.vscode-docker",
+                "tamasfe.even-better-toml",
+                "ms-python.python",
+                "charliermarsh.ruff",
+                "github.vscode-github-actions",
+                "bierner.markdown-mermaid"
+            ]
+        }
+    },
+    "remoteEnv": {
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "postgres",
+        "POSTGRES_DB": "peach_tree_bank"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    "mounts": [
+        {
+            "source": "/var/run/docker.sock",
+            "target": "/var/run/docker.sock",
+            "type": "bind"
+        }
+    ],
+    "shutdownAction": "stopCompose"
+}
