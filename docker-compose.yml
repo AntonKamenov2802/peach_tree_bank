@@ -1,0 +1,19 @@
+services:
+
+  back-end:
+    build: 
+      context: ./back-end
+      dockerfile: Dockerfile
+      target: prod
+    ports:
+      - "8080:8080"
+
+  database:
+    image: postgres:17.2
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ${PWD}/db-data/:/var/lib/postgresql/data/
+
