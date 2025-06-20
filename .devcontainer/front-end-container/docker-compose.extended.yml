@@ -1,20 +1,12 @@
 services:
-
-  back-end:
-    build: 
-      context: ./back-end
-      dockerfile: Dockerfile
-      target: prod
-    ports:
-      - "8080:8080"
-
   front-end:
     build:
-      context: ./front-end
-      dockerfile: Dockerfile
-      target: prod
+      target: dev
+    volumes:
+      - ./:/workspace:cached
     ports:
       - "80:80"
+    command: /bin/bash -c "while sleep 1000; do :; done"
 
   database:
     image: postgres:17.2
@@ -24,4 +16,3 @@ services:
       - .env
     volumes:
       - ${PWD}/db-data/:/var/lib/postgresql/data/
-
