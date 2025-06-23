@@ -13,3 +13,33 @@ containing the following variables:
 
 To start the services run `docker compose up` in the root folder of the project.
 The app should be accessible on `localhost` from your browser.
+
+
+# Database ERD
+
+```mermaid
+
+
+erDiagram
+
+User {
+    id uuid
+    email string
+    username string
+    password string
+
+}
+
+Transaction {
+    id uuid
+    date datetime
+    amount float
+    recipient string
+    type int
+    state int
+    user_id uuid FK
+}
+
+User ||--o{ Transaction : ""
+
+```
