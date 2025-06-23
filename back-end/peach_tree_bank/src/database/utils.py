@@ -12,6 +12,6 @@ SQLALCHEMY_DATABASE_URL = f"postgresql://{postgres_user}:{postgres_password}@dat
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 
-def get_session() -> Generator[Session, None, None]:
+def get_db_session() -> Generator[Session, None, None]:
     with Session(engine) as session:
         yield session
