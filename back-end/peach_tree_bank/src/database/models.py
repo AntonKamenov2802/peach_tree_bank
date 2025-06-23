@@ -7,7 +7,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 class User(SQLModel, table=True):
     id: UUID | None = Field(default_factory=uuid4, primary_key=True, index=True)
-    username: str
+    username: str = Field(index=True, unique=True)
     password: str
 
     transactions: list['Transaction'] = Relationship(back_populates="user")
