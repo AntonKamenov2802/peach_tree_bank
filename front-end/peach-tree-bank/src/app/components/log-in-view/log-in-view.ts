@@ -30,7 +30,7 @@ export class LogInView {
       password: this.password,
     }).pipe(first()).subscribe({
       next: token => {
-        console.log("Authorized")
+        localStorage.setItem('authToken', token.token);
         this.router.navigate(['/transactions'])
       },
       error: e => {

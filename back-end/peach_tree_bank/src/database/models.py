@@ -28,7 +28,7 @@ class TransactionType(int, Enum):
 
 class Transaction(SQLModel, table=True):
     id: UUID | None = Field(default_factory=uuid4, primary_key=True, index=True)
-    date: datetime
+    date: datetime = Field(default_factory=datetime.now)
     amount: float
     recipient: str
     type: TransactionType = Field(sa_column=Column(Integer))
