@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { App } from './app/app';
 
-createApp(App).use(store).use(router).mount('#app')
+bootstrapApplication(App, appConfig)
+  .catch((err) => console.error(err));
