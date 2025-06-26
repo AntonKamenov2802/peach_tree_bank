@@ -13,7 +13,8 @@ containing the following variables:
 
 To start the services run `docker compose up` in the root folder of the project.
 The app should be accessible on `localhost` from your browser.
-
+Navigate to the login page on `localhost/login`.
+Default username is `admin` and password -> `admin`;
 
 # Database ERD
 

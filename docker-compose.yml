@@ -14,7 +14,7 @@ services:
     build:
       context: ./front-end
       dockerfile: Dockerfile
-      target: prod
+      target: dev
     ports:
       - "80:80"
 
