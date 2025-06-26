@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { LogInView } from './components/log-in-view/log-in-view';
 import { TransactionView } from './components/transaction-view/transaction-view';
+import { TransactionOverview } from './components/transaction-overview/transaction-overview';
+import { TransactionDetails } from './components/transaction-details/transaction-details';
 
 export const routes: Routes = [
   {
@@ -9,6 +11,16 @@ export const routes: Routes = [
   },
   {
     path: 'transactions',
-    component: TransactionView
+    component: TransactionView,
+    children: [
+      {
+        path: '',
+        component: TransactionOverview
+      },
+      {
+        path: ':id',
+        component: TransactionDetails
+      }
+    ]
   }
 ];

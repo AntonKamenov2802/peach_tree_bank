@@ -1,1 +1,60 @@
-<p>transaction-details works!</p>
+<div class="row">
+  <div class="col-3">
+    <h3>Amount:</h3>
+  </div>
+  <div class="col">
+    <h3><span class="badge text-bg-primary m-0">{{transaction.amount}}</span></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <h3>Date:</h3>
+  </div>
+  <div class="col">
+    <h3><span class="badge text-bg-primary m-0">{{transaction.date}}</span></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <h3>To Contractor:</h3>
+  </div>
+  <div class="col">
+    <h3><span class="badge text-bg-primary m-0">{{transaction.recipient}}</span></h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <h3>State:</h3>
+  </div>
+  <div class="col">
+    @if(transaction.state == TransactionState.SEND) {
+      <h3>
+        <span class="badge text-bg-danger m-0"><i class="bi bi-send"> Send</i></span>
+      </h3>
+    }
+    @if(transaction.state == TransactionState.RECIEVED) {
+      <h3>
+        <span class="badge text-bg-warning"><i class="bi bi-truck"></i> Recieved</span>
+      </h3>
+    }
+    @if(transaction.state == TransactionState.PAYED) {
+      <h3>
+        <span class="badge text-bg-success"><i class="bi bi-piggy-bank"></i> Payed</span>
+      </h3>
+    }
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-3">
+    <label>Change transaction state: </label>
+  </div>
+  <div class="col">
+    <select [(ngModel)]="currentTransactionState" (ngModelChange)="updateState()">
+      <option [value]="TransactionState.SEND">Send</option>
+      <option [value]="TransactionState.RECIEVED">Recieved</option>
+      <option [value]="TransactionState.PAYED">Payed</option>
+    </select>
+  </div>
+</div>

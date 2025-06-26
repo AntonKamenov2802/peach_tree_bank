@@ -9,7 +9,7 @@ FROM base AS prod
 
 COPY . app
 WORKDIR /app/peach_tree_bank
-RUN uv sync --locked
+# RUN uv sync --locked
 CMD [ "uv", "run", "src/main.py" ]
     
 

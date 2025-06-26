@@ -19,7 +19,7 @@ router = APIRouter(
 )
 
 
-@router.post("/authenticate")
+@router.post("/login")
 def authenticate_with_username_and_password(user: User, session: Session = Depends(get_db_session)) -> AuthToken:
     try:
         user = session.exec(select(User).where(User.username == user.username)).one()
