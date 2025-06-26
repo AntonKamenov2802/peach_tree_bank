@@ -1,0 +1,13 @@
+<div class="card mx-auto" style="max-width: 30%; max-height: 30%;">
+  <div class="card-header">
+    <h1>Peach Tree Bank</h1>
+  </div>
+  <div class="card-body">
+    <div class="vstack gap-3">
+      <input type="text" [(ngModel)]="username" placeholder="Username">
+      <input type="password" [(ngModel)]="password" placeholder="Password">
+      <button (click)="onLogIn()" class="btn btn-primary">Log-in</button>
+      <p [hidden]="is_authorized" style="color: red;">Incorrect credentials, please try again.</p>
+    </div>
+</div>
+</div>

@@ -1,0 +1,46 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody class="overflow-auto">
+    @for (transaction of user_transactions; track $index) {
+      <tr (click)="onTransactionClicked($index)">
+        <td>
+          @if(transaction.state == TransactionState.SEND) {
+              <span class="badge text-bg-danger m-0"><i class="bi bi-send"></i></span>
+          }
+          @if(transaction.state == TransactionState.RECIEVED) {
+              <span class="badge text-bg-warning"><i class="bi bi-truck"></i></span>
+          }
+          @if(transaction.state == TransactionState.PAYED) {
+              <span class="badge text-bg-success"><i class="bi bi-piggy-bank"></i></span>
+          }
+        </td>
+        <td>
+          <label>
+            {{transaction.date}}
+          </label>
+        </td>
+        <td>
+          <label>{{transaction.recipient}}</label>
+          @if(transaction.type == TransactionType.CARD_PAYMENT) {
+            <p class="text-secondary">Card Payment</p>
+          }
+          @if(transaction.type == TransactionType.ONLINE_TRANSFER) {
+            <p class="text-secondary">Onlie Transfer</p>
+          }
+          @if(transaction.type == TransactionType.TRANSACTION) {
+            <p class="text-secondary">Transaction</p>
+          }
+        <td>
+          <label>-${{transaction.amount}}</label>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

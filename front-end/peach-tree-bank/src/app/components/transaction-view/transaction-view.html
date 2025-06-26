@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-2">
+    <div class="card card-lg">
+      <div class="card-header">
+        <i class="bi bi-arrow-left-right"></i> Make a transaction
+      </div>
+      <div class="card-body">
+        <div class="vstack gap-2">
+          <input type="text" [(ngModel)]="newTransaction.recipient" placeholder="To account:">
+          <input type="number" [(ngModel)]="newTransaction.amount" placeholder="Amount">
+          <select [(ngModel)]="newTransaction.type">
+            <option [value]="TransactionType.CARD_PAYMENT">Card Payement</option>
+            <option [value]="TransactionType.ONLINE_TRANSFER">Online Transfer</option>
+            <option [value]="TransactionType.TRANSACTION">Transaction</option>
+          </select>
+          <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <i class="bi bi-suitcase-lg-fill"></i> {{getCardHeader()}}
+      </div>
+      <div class="card-body">
+        <router-outlet />
+      </div>
+  </div>
+</div>

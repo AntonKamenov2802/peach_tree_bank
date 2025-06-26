@@ -9,8 +9,6 @@
                 "mhutchie.git-graph",
                 "usernamehw.errorlens",
                 "humao.rest-client",
-                "Vue.volar",
-                "vitest.explorer",
                 "dbaeumer.vscode-eslint",
                 "EditorConfig.EditorConfig",
                 "esbenp.prettier-vscode"
@@ -26,7 +24,7 @@
                     "source.fixAll": "explicit"
                 },
                 "editor.formatOnSave": true,
-                "editor.defaultFormatter": "esbenp.prettier-vscode"
+                "editor.defaultFormatter": "Vue.volar"
             }
         }
     },
@@ -39,6 +37,5 @@
             "target": "/var/run/docker.sock",
             "type": "bind"
         }
-    ],
-    "postCreateCommand": ["/workspace/.devcontainer/front-end-container/postCreate.sh"]
+    ]
 }

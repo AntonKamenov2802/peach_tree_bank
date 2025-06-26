@@ -1,13 +1,12 @@
-from typing import Annotated
 from uuid import UUID, uuid4
 
-from fastapi import HTTPException
-from fastapi.security import OAuth2AuthorizationCodeBearer
+from fastapi import HTTPException, Depends
+from fastapi.security.api_key import APIKeyHeader
 
 from database.models import User
 
 
-oath2_scheme = OAuth2AuthorizationCodeBearer(tokenUrl="token", authorizationUrl="authenticate")
+api_key_header= APIKeyHeader(name="Authorization")
 
 # I decided to skip the authorization part
 # in this project and instead create a 
@@ -15,8 +14,8 @@ oath2_scheme = OAuth2AuthorizationCodeBearer(tokenUrl="token", authorizationUrl=
 fake_auth_token_cache: dict[UUID, User] = {}
 
 
-def is_authorized(authorization: Annotated[UUID, oath2_scheme]) -> User | None:
-    user = fake_auth_token_cache.get(authorization)
+def is_authorized(authorization: UUID = Depends(api_key_header)) -> User | None:
+    user = fake_auth_token_cache.get(UUID(authorization))
     if not user:
         raise HTTPException(status_code=401, detail="Unauthorized! Please log-in with username and password.")
     return user
